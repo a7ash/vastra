@@ -30,7 +30,7 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/80 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
@@ -40,8 +40,8 @@ const Navigation = () => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className={`text-2xl font-cooper ${
-                scrolled ? 'text-accent' : 'text-dark'
-              }`}
+                scrolled ? 'text-secondary' : 'text-white'
+              } hover:text-yellow-light transition-colors duration-200`}
             >
               VASTRA
             </motion.span>
@@ -54,7 +54,9 @@ const Navigation = () => {
                 key={item.name}
                 href={item.path}
                 className={`nav-link font-medium transition-colors duration-200 ${
-                  scrolled ? 'text-dark/70 hover:text-accent' : 'text-dark/80 hover:text-accent'
+                  scrolled 
+                    ? 'text-dark hover:text-secondary' 
+                    : 'text-white hover:text-yellow-light'
                 }`}
               >
                 {item.name}
@@ -67,7 +69,7 @@ const Navigation = () => {
             <button
               onClick={() => setIsOpen(!isOpen)}
               className={`transition-colors duration-200 ${
-                scrolled ? 'text-dark/70' : 'text-dark/80'
+                scrolled ? 'text-secondary' : 'text-white'
               }`}
             >
               <svg
@@ -97,7 +99,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border border-secondary/20"
+              className="md:hidden bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border-2 border-yellow-light/20"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navItems.map((item, index) => (
@@ -109,7 +111,7 @@ const Navigation = () => {
                   >
                     <Link
                       href={item.path}
-                      className="block px-3 py-2 rounded-xl text-base font-medium text-dark/70 hover:text-accent hover:bg-primary/20 transition-all duration-200"
+                      className="block px-3 py-2 rounded-xl text-base font-medium text-dark hover:text-secondary hover:bg-yellow-light/10 transition-all duration-200"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}

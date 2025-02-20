@@ -7,14 +7,21 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: "#FFE5E5",    // Soft pink
-        secondary: "#97DECE",  // Mint green
-        accent: "#FF9494",     // Coral pink
-        neutral: "#F9F9F9",    // Off white
-        dark: "#2D2D2D",       // Soft black
-        sage: "#E3F2C1",      // Sage green
-        lavender: "#C9A7EB",  // Soft purple
-        peach: "#FFB4B4",     // Peach
+        primary: "#FFD93D",    // Vibrant yellow
+        secondary: "#FF4B4B",  // Bright red
+        accent: "#FF8551",     // Orange accent
+        neutral: "#FFFFFF",    // White
+        dark: "#1A1A1A",       // Dark gray
+        yellow: {
+          light: "#FFE17B",
+          DEFAULT: "#FFD93D",
+          dark: "#FFC107",
+        },
+        red: {
+          light: "#FF6B6B",
+          DEFAULT: "#FF4B4B",
+          dark: "#E63946",
+        }
       },
       fontFamily: {
         sans: ['Inter', 'sans-serif'],
@@ -22,7 +29,8 @@ module.exports = {
       },
       backgroundImage: {
         'grain-pattern': "url('/grain.svg')",
-        'gradient-pastel': 'linear-gradient(135deg, #FFE5E5 0%, #97DECE 100%)',
+        'gradient-warm': 'linear-gradient(135deg, #FFD93D 0%, #FF4B4B 100%)',
+        'gradient-poster': 'radial-gradient(circle at 30% 107%, #FFD93D 0%, #FFB240 5%, #FF4B4B 45%, #FF8551 60%, #FFD93D 90%)',
       },
     },
   },
