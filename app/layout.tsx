@@ -1,9 +1,12 @@
 import type { Metadata } from 'next'
-import { Inter } from 'next/font/google'
+import { Inter, Domine } from 'next/font/google'
 import './globals.css'
 import Navigation from './components/Navigation'
 
 const inter = Inter({ subsets: ['latin'] })
+const domine = Domine({ 
+  subsets: ['latin'],
+})
 
 export const metadata: Metadata = {
   title: 'VASTRA - Technical Textile Fest',
@@ -26,7 +29,7 @@ export default function RootLayout({
           crossOrigin="anonymous"
         />
       </head>
-      <body className={`${inter.className} font-preload`}>
+      <body className={`${domine.className} font-preload`}>
         <Navigation />
         <main className="min-h-screen">
           {children}

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import Image from 'next/image';
+import BackgroundImages from './components/BackgroundImages';
 
 const fadeInUp = {
   initial: { opacity: 0, y: 20 },
@@ -20,56 +21,160 @@ const staggerContainer = {
 export default function Home() {
   return (
     <div className="relative">
+      {/* Background Images */}
+      <BackgroundImages />
+
       {/* Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center bg-gradient-poster overflow-hidden">
+      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Enhanced grain texture */}
         <div className="absolute inset-0 bg-grain-pattern opacity-[0.15] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] mix-blend-overlay" />
+        <div className="absolute inset-0 bg-noise-pattern opacity-[0.05] mix-blend-multiply" />
+        <div className="absolute inset-0 bg-spray-gradient mix-blend-overlay" />
         
+        {/* Cyber sigilist elements */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="absolute top-0 left-0 w-64 h-64 opacity-20">
+            <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slow">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <circle cx="50" cy="50" r="20" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+            </svg>
+          </div>
+          <div className="absolute bottom-0 right-0 w-64 h-64 opacity-20">
+            <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-reverse-slow">
+              <circle cx="50" cy="50" r="45" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="5" y1="50" x2="95" y2="50" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="50" y1="5" x2="50" y2="95" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="15" y1="15" x2="85" y2="85" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="85" y1="15" x2="15" y2="85" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+            </svg>
+          </div>
+          <div className="absolute top-0 right-0 w-48 h-48 opacity-20">
+            <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-slower">
+              <circle cx="50" cy="50" r="35" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <circle cx="50" cy="50" r="25" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="15" y1="50" x2="85" y2="50" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="50" y1="15" x2="50" y2="85" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="25" y1="25" x2="75" y2="75" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="75" y1="25" x2="25" y2="75" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+            </svg>
+          </div>
+          <div className="absolute bottom-0 left-0 w-56 h-56 opacity-20">
+            <svg viewBox="0 0 100 100" className="w-full h-full animate-spin-reverse-slower">
+              <circle cx="50" cy="50" r="40" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <circle cx="50" cy="50" r="30" fill="none" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="10" y1="50" x2="90" y2="50" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="50" y1="10" x2="50" y2="90" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="20" y1="20" x2="80" y2="80" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+              <line x1="80" y1="20" x2="20" y2="80" stroke="currentColor" strokeWidth="0.5" className="text-grey-light" />
+            </svg>
+          </div>
+        </div>
+
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
           className="container relative z-10 py-20"
         >
-          {/* Institute Name */}
+          {/* Institute Name with new styling */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center mb-12"
           >
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl py-6 px-8 shadow-xl inline-block">
-              <h3 className="text-lg md:text-xl text-dark font-semibold mb-2">VEERMATA JIJABAI TECHNOLOGICAL INSTITUTE</h3>
-              <h4 className="text-xl md:text-2xl text-secondary font-bold mb-4">DEPARTMENT OF TEXTILE ENGINEERING</h4>
-              <p className="text-accent text-lg font-medium tracking-wide">Presents</p>
+            <div className="bg-grey-light/95 backdrop-blur-sm rounded-xl py-6 px-8 shadow-xl inline-block">
+              <h3 className="text-lg md:text-xl text-grey-text font-semibold mb-2 font-domine tracking-wide">VEERMATA JIJABAI TECHNOLOGICAL INSTITUTE</h3>
+              <h4 className="text-xl md:text-2xl text-grey-text font-bold mb-4 font-domine">DEPARTMENT OF TEXTILE ENGINEERING</h4>
+              <p className="text-grey-text text-lg font-medium tracking-wider">Presents</p>
             </div>
           </motion.div>
 
-          {/* Event Logo */}
+          {/* Event Logo with enhanced mandala styling */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
-            transition={{ duration: 0.5 }}
+            transition={{ duration: 1.5 }}
             className="text-center mb-16 relative"
           >
             <motion.div
               initial={{ opacity: 0, scale: 1.2 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
+              className="relative mb-8"
+            >
+              <div className="relative">
+                <Image
+                  src="/images/Vastra logo.png"
+                  alt="VASTRA Logo"
+                  width={300}
+                  height={300}
+                  className="mx-auto relative z-10"
+                  priority
+                />
+                {/* Enhanced Mandala design */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-[500px] h-[500px] absolute">
+                    <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-slow">
+                      <g className="text-grey-light/20">
+                        {[...Array(12)].map((_, i) => (
+                          <g key={i} transform={`rotate(${i * 30} 100 100)`}>
+                            <path d="M100 20L100 180" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                            <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                          </g>
+                        ))}
+                      </g>
+                    </svg>
+                  </div>
+                  <div className="w-[450px] h-[450px] absolute">
+                    <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-reverse-slow">
+                      <g className="text-grey-light/30">
+                        {[...Array(8)].map((_, i) => (
+                          <g key={i} transform={`rotate(${i * 45} 100 100)`}>
+                            <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                            <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                          </g>
+                        ))}
+                      </g>
+                    </svg>
+                  </div>
+                  <div className="w-[400px] h-[400px] absolute">
+                    <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-slower">
+                      <g className="text-grey-light/25">
+                        {[...Array(6)].map((_, i) => (
+                          <g key={i} transform={`rotate(${i * 60} 100 100)`}>
+                            <path d="M20 100L180 100" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                            <circle cx="100" cy="100" r="50" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                          </g>
+                        ))}
+                      </g>
+                    </svg>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            <motion.div
+              initial={{ opacity: 0, scale: 1.2 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 1 }}
               className="relative"
             >
-              <h1 className="text-8xl md:text-[12rem] font-cooper text-white mb-4 relative z-10 drop-shadow-[0_0_30px_rgba(255,75,75,0.3)]">
+              <h1 className="font-domine text-8xl md:text-[12rem] text-white mb-4 relative z-10">
                 VASTRA
               </h1>
-              <div className="absolute inset-0 flex items-center justify-center opacity-20">
-                <span className="text-8xl md:text-[12rem] font-cooper text-dark blur-sm">VASTRA</span>
-              </div>
             </motion.div>
             <motion.div
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-secondary text-white px-8 py-3 rounded-full inline-block"
+              className="bg-grey-light/95 text-grey-text px-8 py-3 rounded-xl inline-block shadow-xl"
             >
-              <p className="text-2xl md:text-3xl font-cooper">ON 12TH MARCH</p>
+              <p className="text-2xl md:text-3xl font-domine tracking-wider">ON 12TH MARCH</p>
             </motion.div>
           </motion.div>
 
@@ -83,10 +188,10 @@ export default function Home() {
                 whileInView="animate"
                 viewport={{ once: true }}
                 whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.2 } }}
-                className="bg-white/95 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 border-2 border-yellow-light/20"
+                className="bg-grey-light/95 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
               >
-                <h3 className="text-xl font-cooper mb-3 text-secondary">{event.title}</h3>
-                <p className="text-dark/70">{event.description}</p>
+                <h3 className="text-xl font-domine mb-3 text-grey-text tracking-wide">{event.title}</h3>
+                <p className="text-grey-text/90 font-domine">{event.description}</p>
               </motion.div>
             ))}
           </div>
@@ -99,9 +204,9 @@ export default function Home() {
             className="text-center mt-16"
           >
             <motion.button
-              whileHover={{ scale: 1.05, backgroundColor: '#E63946' }}
+              whileHover={{ scale: 1.05, backgroundColor: '#7C3AED' }}
               whileTap={{ scale: 0.95 }}
-              className="bg-secondary text-white hover:bg-red-dark px-10 py-4 text-xl font-cooper rounded-full shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-violet-DEFAULT text-white hover:bg-violet-dark px-10 py-4 text-xl font-domine tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
             >
               GET READY!
             </motion.button>
@@ -114,11 +219,11 @@ export default function Home() {
             transition={{ delay: 0.8 }}
             className="mt-16 text-center"
           >
-            <div className="bg-white/90 backdrop-blur-sm rounded-2xl py-6 px-8 inline-block shadow-lg">
-              <h4 className="text-dark font-cooper mb-4 text-xl">Secretaries</h4>
+            <div className="bg-grey-light/95 backdrop-blur-sm rounded-xl py-6 px-8 inline-block shadow-lg">
+              <h4 className="text-grey-text font-domine mb-4 text-xl">Secretaries</h4>
               <div className="flex flex-col md:flex-row justify-center md:space-x-8 space-y-2 md:space-y-0">
-                <p className="text-secondary font-medium">Piyush Khismatrao: 8557730755</p>
-                <p className="text-secondary font-medium">Virashri Kamane: 8356924200</p>
+                <p className="text-grey-text/90 font-medium">Piyush Khismatrao: 8557730755</p>
+                <p className="text-grey-text/90 font-medium">Virashri Kamane: 8356924200</p>
               </div>
             </div>
           </motion.div>
