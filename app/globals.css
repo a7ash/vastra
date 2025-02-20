@@ -1,0 +1,49 @@
+@font-face {
+  font-family: 'Cooper Black';
+  src: url('/fonts/COOPBL.TTF') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply bg-gray-50 text-gray-900;
+  }
+
+  /* Preload the font with a small invisible element to ensure it's loaded */
+  .font-preload::after {
+    content: '';
+    font-family: 'Cooper Black';
+    position: absolute;
+    height: 0;
+    width: 0;
+    overflow: hidden;
+  }
+}
+
+@layer components {
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+  
+  .btn {
+    @apply px-4 py-2 rounded-md font-medium transition-colors duration-200;
+  }
+  
+  .btn-primary {
+    @apply bg-primary text-white hover:bg-primary/90;
+  }
+  
+  .nav-link {
+    @apply text-gray-600 hover:text-primary transition-colors duration-200;
+  }
+
+  .heading {
+    @apply font-cooper tracking-wide;
+  }
+} 
