@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
 import React from 'react';
+import Image from 'next/image';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -20,9 +21,10 @@ const Navigation = () => {
 
   const navItems = [
     { name: 'Home', path: '/' },
-    { name: 'Events', path: '#events' },
-    { name: 'Register', path: '#register' },
-    { name: 'Contact', path: '#contact' },
+    { name: 'Events', path: '/events' },
+    { name: 'Gallery', path: '/gallery' },
+    { name: 'Register', path: '/register' },
+    { name: 'Contact', path: '/contact' },
   ];
 
   return (
@@ -36,17 +38,27 @@ const Navigation = () => {
     >
       <div className="container mx-auto px-4">
         <div className="flex justify-between items-center h-16 border-b-2 border-white/40">
-          <Link href="/" className="flex items-center space-x-3">
-            <motion.span
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className={`text-2xl font-oldEnglish ${
-                scrolled ? 'text-white' : 'text-white'
-              } hover:text-yellow-light transition-colors duration-200`}
-            >
-              VASTRA
-            </motion.span>
-          </Link>
+          <div className="flex items-center">
+            <Image
+              src="/images/transparent-bg.webp"
+              alt="VJTI Logo"
+              width={128}
+              height={128}
+              className="object-contain mr-8 -ml-4"
+              priority
+            />
+            <Link href="/" className="flex items-center">
+              <motion.span
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                className={`text-2xl font-oldEnglish ${
+                  scrolled ? 'text-white' : 'text-white'
+                } hover:text-yellow-light transition-colors duration-200`}
+              >
+                VASTRA
+              </motion.span>
+            </Link>
+          </div>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center">
