@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Link from 'next/link';
 import { motion, AnimatePresence } from 'framer-motion';
+import React from 'react';
 
 const Navigation = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,17 +31,17 @@ const Navigation = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.5 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        scrolled ? 'bg-[#AC426E]/90 backdrop-blur-md shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="container mx-auto px-4">
-        <div className="flex justify-between items-center h-16">
+        <div className="flex justify-between items-center h-16 border-b-2 border-white/40">
           <Link href="/" className="flex items-center space-x-3">
             <motion.span
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
-              className={`text-2xl font-cooper ${
-                scrolled ? 'text-secondary' : 'text-white'
+              className={`text-2xl font-oldEnglish ${
+                scrolled ? 'text-white' : 'text-white'
               } hover:text-yellow-light transition-colors duration-200`}
             >
               VASTRA
@@ -48,19 +49,23 @@ const Navigation = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.name}
-                href={item.path}
-                className={`nav-link font-medium transition-colors duration-200 ${
-                  scrolled 
-                    ? 'text-dark hover:text-secondary' 
-                    : 'text-white hover:text-yellow-light'
-                }`}
-              >
-                {item.name}
-              </Link>
+          <div className="hidden md:flex items-center">
+            {navItems.map((item, index) => (
+              <React.Fragment key={item.name}>
+                <Link
+                  href={item.path}
+                  className={`nav-link font-oldEnglish text-lg px-4 py-2 transition-colors duration-200 ${
+                    scrolled 
+                      ? 'text-white hover:text-yellow-light' 
+                      : 'text-white hover:text-yellow-light'
+                  }`}
+                >
+                  {item.name}
+                </Link>
+                {index < navItems.length - 1 && (
+                  <div className={`h-8 w-[2px] ${scrolled ? 'bg-white/40' : 'bg-white/40'}`} />
+                )}
+              </React.Fragment>
             ))}
           </div>
 
@@ -68,9 +73,7 @@ const Navigation = () => {
           <div className="md:hidden">
             <button
               onClick={() => setIsOpen(!isOpen)}
-              className={`transition-colors duration-200 ${
-                scrolled ? 'text-secondary' : 'text-white'
-              }`}
+              className="text-white transition-colors duration-200"
             >
               <svg
                 className="h-6 w-6"
@@ -99,7 +102,7 @@ const Navigation = () => {
               animate={{ opacity: 1, height: 'auto' }}
               exit={{ opacity: 0, height: 0 }}
               transition={{ duration: 0.3 }}
-              className="md:hidden bg-white/95 backdrop-blur-md rounded-2xl shadow-lg border-2 border-yellow-light/20"
+              className="md:hidden bg-[#AC426E]/95 backdrop-blur-md rounded-b-2xl shadow-lg border-x-2 border-b-2 border-white/20"
             >
               <div className="px-2 pt-2 pb-3 space-y-1">
                 {navItems.map((item, index) => (
@@ -108,10 +111,11 @@ const Navigation = () => {
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: index * 0.1 }}
+                    className="border-b-2 border-white/20 last:border-b-0"
                   >
                     <Link
                       href={item.path}
-                      className="block px-3 py-2 rounded-xl text-base font-medium text-dark hover:text-secondary hover:bg-yellow-light/10 transition-all duration-200"
+                      className="block px-3 py-2 text-base font-oldEnglish text-white hover:text-yellow-light transition-all duration-200"
                       onClick={() => setIsOpen(false)}
                     >
                       {item.name}

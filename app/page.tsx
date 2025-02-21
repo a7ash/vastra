@@ -24,13 +24,45 @@ export default function Home() {
       {/* Background Images */}
       <BackgroundImages />
 
+      {/* Decorative Borders */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 0.6 }}
+        transition={{ duration: 1.5, delay: 1 }}
+        className="fixed inset-0 pointer-events-none z-10"
+      >
+        <div className="absolute inset-8 border border-white/20">
+          <div className="absolute inset-0 p-1">
+            <Image
+              src="/images/borders.jpg"
+              alt=""
+              fill
+              className="object-fill opacity-40 mix-blend-overlay"
+              priority
+            />
+          </div>
+        </div>
+      </motion.div>
+
       {/* Hero Section */}
       <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+        {/* Main Background Image */}
+        <div className="absolute inset-0">
+          <Image
+            src="/images/bora background.jpg"
+            alt="Bora Background"
+            fill
+            className="object-cover"
+            priority
+          />
+          <div className="absolute inset-0 bg-black/40" /> {/* Overlay for better text readability */}
+        </div>
+
         {/* Enhanced grain texture */}
         <div className="absolute inset-0 bg-grain-pattern opacity-[0.15] mix-blend-overlay" />
         <div className="absolute inset-0 bg-grid-pattern opacity-[0.1] mix-blend-overlay" />
         <div className="absolute inset-0 bg-noise-pattern opacity-[0.05] mix-blend-multiply" />
-        <div className="absolute inset-0 bg-spray-gradient mix-blend-overlay" />
+        <div className="absolute inset-0 bg-spray-gradient mix-blend-overlay opacity-30" />
         
         {/* Cyber sigilist elements */}
         <div className="absolute inset-0 overflow-hidden pointer-events-none">
@@ -89,9 +121,9 @@ export default function Home() {
             className="text-center mb-12"
           >
             <div className="bg-grey-light/95 backdrop-blur-sm rounded-xl py-6 px-8 shadow-xl inline-block">
-              <h3 className="text-lg md:text-xl text-grey-text font-semibold mb-2 font-domine tracking-wide">VEERMATA JIJABAI TECHNOLOGICAL INSTITUTE</h3>
-              <h4 className="text-xl md:text-2xl text-grey-text font-bold mb-4 font-domine">DEPARTMENT OF TEXTILE ENGINEERING</h4>
-              <p className="text-grey-text text-lg font-medium tracking-wider">Presents</p>
+              <h3 className="text-lg md:text-xl text-grey-text font-semibold mb-2 font-domine tracking-wide drop-shadow-[0_4px_8px_rgba(115,57,69,0.6)]">VEERMATA JIJABAI TECHNOLOGICAL INSTITUTE</h3>
+              <h4 className="text-xl md:text-2xl text-grey-text font-bold mb-4 font-domine drop-shadow-[0_4px_8px_rgba(115,57,69,0.6)]">DEPARTMENT OF TEXTILE ENGINEERING</h4>
+              <p className="text-grey-text text-lg font-medium tracking-wider drop-shadow-[0_4px_8px_rgba(115,57,69,0.6)]">Presents</p>
             </div>
           </motion.div>
 
@@ -121,11 +153,11 @@ export default function Home() {
                 <div className="absolute inset-0 flex items-center justify-center">
                   <div className="w-[500px] h-[500px] absolute">
                     <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-slow">
-                      <g className="text-grey-light/20">
+                      <g className="text-white/70">
                         {[...Array(12)].map((_, i) => (
                           <g key={i} transform={`rotate(${i * 30} 100 100)`}>
-                            <path d="M100 20L100 180" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                            <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                            <path d="M100 20L97 180L100 177L103 180L100 20" stroke="none" fill="currentColor" className="drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
+                            <circle cx="100" cy="100" r="60" stroke="currentColor" strokeWidth="2.5" fill="none" className="drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
                           </g>
                         ))}
                       </g>
@@ -133,11 +165,11 @@ export default function Home() {
                   </div>
                   <div className="w-[450px] h-[450px] absolute">
                     <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-reverse-slow">
-                      <g className="text-grey-light/30">
+                      <g className="text-white/80">
                         {[...Array(8)].map((_, i) => (
                           <g key={i} transform={`rotate(${i * 45} 100 100)`}>
-                            <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                            <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                            <circle cx="100" cy="100" r="80" stroke="currentColor" strokeWidth="2.5" fill="none" className="drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
+                            <circle cx="100" cy="100" r="40" stroke="currentColor" strokeWidth="2.5" fill="none" className="drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
                           </g>
                         ))}
                       </g>
@@ -145,11 +177,11 @@ export default function Home() {
                   </div>
                   <div className="w-[400px] h-[400px] absolute">
                     <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-slower">
-                      <g className="text-grey-light/25">
+                      <g className="text-white/90">
                         {[...Array(6)].map((_, i) => (
                           <g key={i} transform={`rotate(${i * 60} 100 100)`}>
-                            <path d="M20 100L180 100" stroke="currentColor" strokeWidth="0.5" fill="none" />
-                            <circle cx="100" cy="100" r="50" stroke="currentColor" strokeWidth="0.5" fill="none" />
+                            <path d="M17 100L180 97L177 100L180 103L17 100" stroke="none" fill="currentColor" className="drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
+                            <circle cx="100" cy="100" r="50" stroke="currentColor" strokeWidth="2.5" fill="none" className="drop-shadow-[0_0_5px_rgba(255,255,255,0.5)]" />
                           </g>
                         ))}
                       </g>
@@ -164,7 +196,7 @@ export default function Home() {
               transition={{ duration: 1 }}
               className="relative"
             >
-              <h1 className="font-domine text-8xl md:text-[12rem] text-white mb-4 relative z-10">
+              <h1 className="font-domine text-8xl md:text-[12rem] text-white mb-4 relative z-10 drop-shadow-[0_8px_16px_rgba(115,57,69,0.8)]">
                 VASTRA
               </h1>
             </motion.div>
@@ -172,7 +204,7 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-grey-light/95 text-grey-text px-8 py-3 rounded-xl inline-block shadow-xl"
+              className="bg-[#AC426E] text-white px-8 py-3 rounded-xl inline-block shadow-xl shadow-[#673973]/20"
             >
               <p className="text-2xl md:text-3xl font-domine tracking-wider">ON 12TH MARCH</p>
             </motion.div>
@@ -188,7 +220,7 @@ export default function Home() {
                 whileInView="animate"
                 viewport={{ once: true }}
                 whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.2 } }}
-                className="bg-grey-light/95 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300"
+                className="bg-grey-light/95 backdrop-blur-sm p-6 rounded-xl shadow-lg hover:shadow-2xl transition-all duration-300 shadow-[#673973]/20"
               >
                 <h3 className="text-xl font-domine mb-3 text-grey-text tracking-wide">{event.title}</h3>
                 <p className="text-grey-text/90 font-domine">{event.description}</p>
@@ -204,10 +236,14 @@ export default function Home() {
             className="text-center mt-16"
           >
             <motion.button
-              whileHover={{ scale: 1.05, backgroundColor: '#7C3AED' }}
+              whileHover={{ 
+                scale: 1.05,
+                boxShadow: '0 0 20px rgba(172, 66, 110, 0.4)'
+              }}
               whileTap={{ scale: 0.95 }}
-              className="bg-violet-DEFAULT text-white hover:bg-violet-dark px-10 py-4 text-xl font-domine tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-300"
+              className="bg-[#AC426E] text-white px-10 py-4 text-xl font-domine tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
             >
+              <span className="absolute inset-0 bg-gradient-to-r from-[#AC426E]/0 via-white/20 to-[#AC426E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
               GET READY!
             </motion.button>
           </motion.div>
