@@ -114,25 +114,16 @@ export default function Home() {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="container relative z-10 py-20"
         >
-          {/* Institute Name with new styling */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            className="text-center mb-24"
-          >
-            <div className="bg-grey-light/95 backdrop-blur-sm rounded-xl py-6 px-8 inline-block shadow-[8px_8px_0px_0px_rgba(109,42,75,1)] transition-all duration-500">
-              <h3 className="text-lg md:text-xl text-grey-text font-semibold mb-2 font-domine tracking-wide">VEERMATA JIJABAI TECHNOLOGICAL INSTITUTE</h3>
-              <h4 className="text-xl md:text-2xl text-grey-text font-bold mb-4 font-domine">DEPARTMENT OF TEXTILE ENGINEERING</h4>
-              <p className="text-grey-text text-lg font-medium tracking-wider">Presents</p>
-            </div>
-          </motion.div>
+          {/* Add flowing ribbons */}
+          <div className="flowing-ribbon flowing-ribbon-left" />
+          <div className="flowing-ribbon flowing-ribbon-right" />
 
           {/* Event Logo with enhanced mandala styling */}
           <motion.div
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="text-center mb-24 relative"
+            className="text-center mb-24 relative mt-48"
           >
             <motion.div
               initial={{ opacity: 0, scale: 1.2 }}
@@ -141,6 +132,38 @@ export default function Home() {
               className="relative mb-8"
             >
               <div className="relative">
+                {/* Arc Text */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="w-[600px] h-[600px] absolute">
+                    <svg viewBox="0 0 200 200" className="w-full h-full">
+                      <defs>
+                        <path
+                          id="curve1"
+                          d="M 10 100 A 90 90 0 1 1 190 100 A 90 90 0 1 1 10 100"
+                          fill="none"
+                          transform="rotate(-90, 100, 100)"
+                        />
+                        <path
+                          id="curve2"
+                          d="M 25 100 A 75 75 0 1 1 175 100 A 75 75 0 1 1 25 100"
+                          fill="none"
+                          transform="rotate(-90, 100, 100)"
+                        />
+                      </defs>
+                      <text className="fill-white text-[0.9rem] font-oldEnglish tracking-[0.1em]">
+                        <textPath href="#curve1" textAnchor="middle" startOffset="50%">
+                          VJTI, Department of Textile Engineers
+                        </textPath>
+                      </text>
+                      <text className="fill-white text-[0.5rem] font-oldEnglish tracking-[0.05em]">
+                        <textPath href="#curve2" textAnchor="middle" startOffset="50%">
+                          presents
+                        </textPath>
+                      </text>
+                    </svg>
+                  </div>
+                </div>
+
                 <Image
                   src="/images/Vastra logo.png"
                   alt="VASTRA Logo"
