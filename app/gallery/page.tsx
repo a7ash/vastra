@@ -66,26 +66,25 @@ export default function Gallery() {
     {
       title: "Last year's Team",
       images: [
-        '/v24team/IMG-20250208-WA0081.jpg',
-        '/v24team/IMG-20250208-WA0079.jpg',
-        '/v24team/IMG-20250208-WA0078.jpg',
-        '/v24team/IMG-20250208-WA0077.jpg',
-        '/v24team/IMG-20250208-WA0074.jpg',
-        '/v24team/IMG-20250208-WA0071.jpg',
-        '/v24team/IMG-20250208-WA0069.jpg',
-        '/v24team/IMG-20250208-WA0044.jpg'
+        '/images/24vastragallery/1.jpg',
+        '/images/24vastragallery/2.jpg',
+        '/images/24vastragallery/3.jpg',
+        '/images/24vastragallery/4.jpg',
+        '/images/24vastragallery/5.jpg',
+        '/images/24vastragallery/6.jpg',
+        '/images/24vastragallery/7.jpg',
+        '/images/24vastragallery/8.jpg'
       ]
     },
     {
       title: "The Fashion Contest",
       images: [
-        '/dresses/IMG-20250208-WA0076.jpg',
-        '/dresses/IMG-20250208-WA0060.jpg',
-        '/dresses/IMG-20250208-WA0055.jpg',
-        '/dresses/IMG-20250208-WA0049.jpg',
-        '/dresses/IMG-20250208-WA0050.jpg',
-        '/dresses/IMG-20250208-WA0021.jpg',
-        '/dresses/IMG-20250208-WA0020.jpg'
+        '/images/tfc/1t.jpg',
+        '/images/tfc/2t.jpg',
+        '/images/tfc/3t.jpg',
+        '/images/tfc/4t.jpg',
+        '/images/tfc/5t.jpg',
+        '/images/tfc/6t.jpg'
       ]
     }
   ];

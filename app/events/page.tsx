@@ -26,7 +26,7 @@ const events = [
     contacts: [
       "Uday K.: 8329961259"
     ],
-    image: "/images/dress to impress.jpg"
+    image: "/images/d2i.jpg"
   },
   {
     title: "PAPER PRESENTATION",
