@@ -74,32 +74,13 @@ export default function Events() {
           
           <div className="space-y-16">
             {events.map((event, index) => (
-              <div key={index} className="flex items-center gap-8">
-                {/* Image on the left for odd indices (0, 2) */}
-                {index % 2 === 0 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: -20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="w-1/3 relative rounded-xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-500"
-                  >
-                    <div className="relative" style={{ paddingTop: '75%' }}> {/* 4:3 aspect ratio container */}
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </motion.div>
-                )}
-
+              <div key={index} className="flex flex-col md:flex-row items-center gap-4 md:gap-8 mb-16">
                 {/* Text Box */}
                 <motion.div
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: index * 0.2 }}
-                  className="flex-1 bg-grey-light/95 backdrop-blur-sm p-8 rounded-xl shadow-[8px_8px_0px_0px_rgba(172,66,110,1)] hover:shadow-[12px_12px_0px_0px_rgba(172,66,110,1)] transition-all duration-500"
+                  className={`w-full md:flex-1 bg-grey-light/95 backdrop-blur-sm p-6 md:p-8 rounded-xl shadow-[8px_8px_0px_0px_rgba(172,66,110,1)] hover:shadow-[12px_12px_0px_0px_rgba(172,66,110,1)] transition-all duration-500 ${index % 2 === 1 ? 'md:order-2' : ''}`}
                 >
                   <h3 className="text-2xl font-domine mb-4 text-grey-text tracking-wide">{event.title}</h3>
                   <p className="text-lg text-grey-text/90 font-domine mb-6">{event.description}</p>
@@ -113,24 +94,22 @@ export default function Events() {
                   </div>
                 </motion.div>
 
-                {/* Image on the right for even indices (1, 3) */}
-                {index % 2 === 1 && (
-                  <motion.div
-                    initial={{ opacity: 0, x: 20 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    transition={{ delay: 0.3 }}
-                    className="w-1/3 relative rounded-xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-500"
-                  >
-                    <div className="relative" style={{ paddingTop: '75%' }}> {/* 4:3 aspect ratio container */}
-                      <Image
-                        src={event.image}
-                        alt={event.title}
-                        fill
-                        className="object-cover"
-                      />
-                    </div>
-                  </motion.div>
-                )}
+                {/* Image */}
+                <motion.div
+                  initial={{ opacity: 0, x: 0, y: 20 }}
+                  animate={{ opacity: 1, x: 0, y: 0 }}
+                  transition={{ delay: 0.3 }}
+                  className={`w-full md:w-1/3 relative rounded-xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-500 ${index % 2 === 1 ? 'md:order-1' : ''}`}
+                >
+                  <div className="relative" style={{ paddingTop: '75%' }}> {/* 4:3 aspect ratio container */}
+                    <Image
+                      src={event.image}
+                      alt={event.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                </motion.div>
               </div>
             ))}
           </div>

@@ -123,18 +123,18 @@ export default function Home() {
             initial={{ scale: 0.9, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 1.5 }}
-            className="text-center mb-24 relative mt-48"
+            className="text-center mb-12 md:mb-24 relative mt-24 md:mt-48"
           >
             <motion.div
               initial={{ opacity: 0, scale: 1.2 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
-              className="relative mb-8"
+              className="relative mb-4 md:mb-8"
             >
               <div className="relative">
                 {/* Arc Text */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-[600px] h-[600px] absolute">
+                  <div className="w-[300px] h-[300px] md:w-[600px] md:h-[600px] absolute">
                     <svg viewBox="0 0 200 200" className="w-full h-full">
                       <defs>
                         <path
@@ -167,14 +167,14 @@ export default function Home() {
                 <Image
                   src="/images/Vastra logo.png"
                   alt="VASTRA Logo"
-                  width={300}
-                  height={300}
-                  className="mx-auto relative z-10"
+                  width={200}
+                  height={200}
+                  className="mx-auto relative z-10 md:w-[300px] md:h-[300px] w-[150px] h-[150px]"
                   priority
                 />
                 {/* Enhanced Charkha design */}
                 <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-[500px] h-[500px] absolute">
+                  <div className="w-[250px] h-[250px] md:w-[500px] md:h-[500px] absolute">
                     <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-slow">
                       <g className="text-white/70">
                         {/* Main wheel */}
@@ -191,7 +191,7 @@ export default function Home() {
                       </g>
                     </svg>
                   </div>
-                  <div className="w-[450px] h-[450px] absolute">
+                  <div className="w-[225px] h-[225px] md:w-[450px] md:h-[450px] absolute">
                     <svg viewBox="0 0 200 200" className="w-full h-full animate-spin-reverse-slow">
                       <g className="text-white/80">
                         {/* Secondary wheel */}
@@ -212,9 +212,9 @@ export default function Home() {
               initial={{ opacity: 0, scale: 1.2 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ duration: 1 }}
-              className="relative mt-16"
+              className="relative mt-8 md:mt-16"
             >
-              <h1 className="font-domine text-8xl md:text-[12rem] text-white mb-8 relative z-10 drop-shadow-[0_8px_16px_rgba(115,57,69,0.8)]">
+              <h1 className="font-domine text-5xl sm:text-6xl md:text-8xl lg:text-[12rem] text-white mb-4 md:mb-8 relative z-10 drop-shadow-[0_8px_16px_rgba(115,57,69,0.8)]">
                 VASTRA
               </h1>
             </motion.div>
@@ -222,14 +222,14 @@ export default function Home() {
               initial={{ y: 20, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ delay: 0.3 }}
-              className="bg-[#AC426E] text-white px-8 py-3 rounded-xl inline-block shadow-xl shadow-[#673973]/20"
+              className="bg-[#AC426E] text-white px-4 sm:px-8 py-2 sm:py-3 rounded-xl inline-block shadow-xl shadow-[#673973]/20"
             >
-              <p className="text-2xl md:text-3xl font-domine tracking-wider">ON 12TH MARCH</p>
+              <p className="text-xl sm:text-2xl md:text-3xl font-domine tracking-wider">ON 12TH MARCH</p>
             </motion.div>
           </motion.div>
 
           {/* Event Features */}
-          <div className="grid md:grid-cols-4 gap-6 mt-24">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 md:gap-6 mt-12 md:mt-24 px-4 md:px-0">
             {events.map((event, index) => (
               <motion.div
                 key={index}
@@ -238,10 +238,10 @@ export default function Home() {
                 whileInView="animate"
                 viewport={{ once: true }}
                 whileHover={{ y: -10, scale: 1.02, transition: { duration: 0.2 } }}
-                className="bg-grey-light/95 backdrop-blur-sm p-6 rounded-xl shadow-[8px_8px_0px_0px_rgba(109,42,75,1)] hover:shadow-[12px_12px_0px_0px_rgba(109,42,75,1)] transition-all duration-500"
+                className="bg-grey-light/95 backdrop-blur-sm p-4 md:p-6 rounded-xl shadow-[8px_8px_0px_0px_rgba(109,42,75,1)] hover:shadow-[12px_12px_0px_0px_rgba(109,42,75,1)] transition-all duration-500"
               >
-                <h3 className="text-xl font-domine mb-3 text-grey-text tracking-wide">{event.title}</h3>
-                <p className="text-grey-text/90 font-domine">{event.description}</p>
+                <h3 className="text-lg md:text-xl font-domine mb-2 md:mb-3 text-grey-text tracking-wide">{event.title}</h3>
+                <p className="text-sm md:text-base text-grey-text/90 font-domine">{event.description}</p>
               </motion.div>
             ))}
           </div>
@@ -251,7 +251,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="text-center mt-16"
+            className="text-center mt-8 md:mt-16"
           >
             <motion.button
               whileHover={{ 
@@ -259,7 +259,7 @@ export default function Home() {
                 boxShadow: '0 0 20px rgba(172, 66, 110, 0.4)'
               }}
               whileTap={{ scale: 0.95 }}
-              className="bg-[#AC426E] text-white px-10 py-4 text-xl font-domine tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
+              className="bg-[#AC426E] text-white px-6 md:px-10 py-3 md:py-4 text-lg md:text-xl font-domine tracking-wider rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 relative overflow-hidden group"
             >
               <span className="absolute inset-0 bg-gradient-to-r from-[#AC426E]/0 via-white/20 to-[#AC426E]/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000"></span>
               GET READY!
@@ -271,7 +271,7 @@ export default function Home() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.8 }}
-            className="mt-24 text-center"
+            className="mt-12 md:mt-24 text-center px-4 md:px-0"
           >
             <div className="bg-grey-light/95 backdrop-blur-sm rounded-xl py-6 px-8 inline-block shadow-[8px_8px_0px_0px_rgba(109,42,75,1)] transition-all duration-500">
               <h4 className="text-grey-text font-domine mb-4 text-xl">Secretaries</h4>
@@ -283,32 +283,62 @@ export default function Home() {
             <p className="text-white text-base mt-4 font-domine tracking-wide opacity-100">For further info, check us out on - </p>
           </motion.div>
 
-          {/* Social Links */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1 }}
-            className="flex justify-center space-x-6 mt-4"
-          >
-            <a href="https://www.instagram.com/vastravjti?utm_source=ig_web_button_share_sheet&igsh=ZDNlZDc0MzIxNw==" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-light transition-colors duration-200">
-              <span className="sr-only">Instagram</span>
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+          {/* Social Media Links */}
+          <div className="flex justify-center items-center gap-8 mt-8">
+            {/* Instagram */}
+            <motion.a
+              href="https://www.instagram.com/vastra_2024/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg
+                className="w-8 h-8 text-grey-light transition-colors duration-300 group-hover:text-[#AC426E]"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path fillRule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clipRule="evenodd" />
               </svg>
-            </a>
-            <a href="https://www.youtube.com/@VASTRAVJTI" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-light transition-colors duration-200">
-              <span className="sr-only">YouTube</span>
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+            </motion.a>
+
+            {/* YouTube */}
+            <motion.a
+              href="https://www.youtube.com/@vastra2024"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg
+                className="w-8 h-8 text-grey-light transition-colors duration-300 group-hover:text-[#AC426E]"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
               </svg>
-            </a>
-            <a href="https://www.linkedin.com/in/vastra-vjti-0019812b1/" target="_blank" rel="noopener noreferrer" className="text-white hover:text-yellow-light transition-colors duration-200">
-              <span className="sr-only">LinkedIn</span>
-              <svg className="h-8 w-8" fill="currentColor" viewBox="0 0 24 24">
+            </motion.a>
+
+            {/* LinkedIn */}
+            <motion.a
+              href="https://www.linkedin.com/company/vastra-2024/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group"
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.95 }}
+            >
+              <svg
+                className="w-8 h-8 text-grey-light transition-colors duration-300 group-hover:text-[#AC426E]"
+                fill="currentColor"
+                viewBox="0 0 24 24"
+              >
                 <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
               </svg>
-            </a>
-          </motion.div>
+            </motion.a>
+          </div>
 
           {/* Address */}
           <motion.div

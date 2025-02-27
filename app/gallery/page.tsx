@@ -169,7 +169,7 @@ export default function Gallery() {
                 </h2>
                 
                 {/* Grid for images */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-3 md:grid-cols-2 lg:grid-cols-3 gap-2 sm:gap-4 md:gap-8">
                   {section.images.map((imagePath, index) => (
                     <motion.div
                       key={`${sectionIndex}-${index}`}
@@ -179,14 +179,14 @@ export default function Gallery() {
                       className="relative w-full cursor-pointer group"
                       onClick={() => setSelectedImage(imagePath)}
                     >
-                      <div className="relative w-full rounded-xl overflow-hidden shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-300">
-                        <div className="relative pt-[75%]"> {/* 4:3 aspect ratio container */}
+                      <div className="relative w-full rounded-lg md:rounded-xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] md:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] md:hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-300">
+                        <div className="relative pt-[100%] md:pt-[75%]"> {/* Square for mobile, 4:3 for desktop */}
                           <Image
                             src={imagePath}
                             alt={`${section.title} Image ${index + 1}`}
                             fill
                             className="absolute top-0 left-0 w-full h-full object-cover transition-transform duration-300 group-hover:scale-105"
-                            sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                            sizes="(max-width: 768px) 33vw, (max-width: 1200px) 50vw, 33vw"
                           />
                         </div>
                         <div className="absolute inset-0 bg-black/10 group-hover:bg-black/20 transition-all duration-300" />
