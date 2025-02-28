@@ -2,10 +2,61 @@
 
 import { motion, Variants } from 'framer-motion';
 import Image from 'next/image';
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Gallery() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
+  const [currentSection, setCurrentSection] = useState<number>(0);
+  const [currentImageIndex, setCurrentImageIndex] = useState<number>(0);
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 50;
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (!selectedImage) return;
+
+      if (event.key === 'ArrowLeft' || event.key === 'ArrowUp') {
+        event.preventDefault();
+        handlePrevImage();
+      } else if (event.key === 'ArrowRight' || event.key === 'ArrowDown') {
+        event.preventDefault();
+        handleNextImage();
+      } else if (event.key === 'Escape') {
+        event.preventDefault();
+        setSelectedImage(null);
+      }
+    };
+
+    window.addEventListener('keydown', handleKeyDown);
+    return () => window.removeEventListener('keydown', handleKeyDown);
+  }, [selectedImage, currentSection, currentImageIndex]);
+
+  // Touch event handlers
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe) {
+      handleNextImage();
+    } else if (isRightSwipe) {
+      handlePrevImage();
+    }
+  };
 
   const floatingAnimation: Variants = {
     initial: { 
@@ -88,6 +139,37 @@ export default function Gallery() {
       ]
     }
   ];
+
+  const handleImageClick = (sectionIndex: number, imageIndex: number) => {
+    setSelectedImage(sections[sectionIndex].images[imageIndex]);
+    setCurrentSection(sectionIndex);
+    setCurrentImageIndex(imageIndex);
+  };
+
+  const handlePrevImage = () => {
+    if (currentImageIndex > 0) {
+      setCurrentImageIndex(currentImageIndex - 1);
+      setSelectedImage(sections[currentSection].images[currentImageIndex - 1]);
+    } else if (currentSection > 0) {
+      const prevSection = currentSection - 1;
+      const lastImageIndex = sections[prevSection].images.length - 1;
+      setCurrentSection(prevSection);
+      setCurrentImageIndex(lastImageIndex);
+      setSelectedImage(sections[prevSection].images[lastImageIndex]);
+    }
+  };
+
+  const handleNextImage = () => {
+    if (currentImageIndex < sections[currentSection].images.length - 1) {
+      setCurrentImageIndex(currentImageIndex + 1);
+      setSelectedImage(sections[currentSection].images[currentImageIndex + 1]);
+    } else if (currentSection < sections.length - 1) {
+      const nextSection = currentSection + 1;
+      setCurrentSection(nextSection);
+      setCurrentImageIndex(0);
+      setSelectedImage(sections[nextSection].images[0]);
+    }
+  };
 
   return (
     <div className="min-h-screen relative">
@@ -176,7 +258,7 @@ export default function Gallery() {
                       animate={{ opacity: 1, scale: 1 }}
                       transition={{ delay: index * 0.05 }}
                       className="relative w-full cursor-pointer group"
-                      onClick={() => setSelectedImage(imagePath)}
+                      onClick={() => handleImageClick(sectionIndex, index)}
                     >
                       <div className="relative w-full rounded-lg md:rounded-xl overflow-hidden shadow-[4px_4px_0px_0px_rgba(255,255,255,1)] hover:shadow-[6px_6px_0px_0px_rgba(255,255,255,1)] md:shadow-[8px_8px_0px_0px_rgba(255,255,255,1)] md:hover:shadow-[12px_12px_0px_0px_rgba(255,255,255,1)] transition-all duration-300">
                         <div className="relative pt-[100%] md:pt-[75%]"> {/* Square for mobile, 4:3 for desktop */}
@@ -199,7 +281,7 @@ export default function Gallery() {
         </motion.div>
       </div>
 
-      {/* Lightbox */}
+      {/* Updated Lightbox */}
       {selectedImage && (
         <motion.div
           initial={{ opacity: 0 }}
@@ -207,6 +289,9 @@ export default function Gallery() {
           exit={{ opacity: 0 }}
           className="fixed inset-0 z-50 bg-black/90 flex items-center justify-center p-4"
           onClick={() => setSelectedImage(null)}
+          onTouchStart={onTouchStart}
+          onTouchMove={onTouchMove}
+          onTouchEnd={onTouchEnd}
         >
           <motion.div
             initial={{ scale: 0.9 }}
@@ -220,10 +305,43 @@ export default function Gallery() {
               width={1920}
               height={1080}
               className="w-full h-auto rounded-lg"
+              priority
             />
+            {/* Navigation Buttons */}
+            <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 flex justify-between items-center px-4">
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handlePrevImage();
+                }}
+                className="bg-white/10 hover:bg-white/20 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-300"
+                aria-label="Previous image"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+              <button
+                onClick={(e) => {
+                  e.stopPropagation();
+                  handleNextImage();
+                }}
+                className="bg-white/10 hover:bg-white/20 text-white rounded-full p-2 backdrop-blur-sm transition-all duration-300"
+                aria-label="Next image"
+              >
+                <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+            </div>
+            {/* Image Counter */}
+            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 bg-black/50 text-white px-4 py-2 rounded-full backdrop-blur-sm">
+              {currentImageIndex + 1} / {sections[currentSection].images.length}
+            </div>
             <button
               className="absolute top-4 right-4 text-white text-4xl hover:text-gray-300 transition-colors"
               onClick={() => setSelectedImage(null)}
+              aria-label="Close gallery"
             >
               ×
             </button>

@@ -287,7 +287,7 @@ export default function Home() {
           <div className="flex justify-center items-center gap-8 mt-8">
             {/* Instagram */}
             <motion.a
-              href="https://www.instagram.com/vastra_2024/"
+              href="https://www.instagram.com/vastravjti/?utm_source=ig_web_button_share_sheet"
               target="_blank"
               rel="noopener noreferrer"
               className="group"
@@ -305,7 +305,7 @@ export default function Home() {
 
             {/* YouTube */}
             <motion.a
-              href="https://www.youtube.com/@vastra2024"
+              href="https://www.youtube.com/@VASTRAVJTI"
               target="_blank"
               rel="noopener noreferrer"
               className="group"
@@ -323,7 +323,7 @@ export default function Home() {
 
             {/* LinkedIn */}
             <motion.a
-              href="https://www.linkedin.com/company/vastra-2024/"
+              href="https://www.linkedin.com/in/vastra-vjti-0019812b1/"
               target="_blank"
               rel="noopener noreferrer"
               className="group"
